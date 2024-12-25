@@ -17,8 +17,11 @@ public class Main {
         ll.add(2);
         ll.add(3);
         ll.add(4);
-        ll.add(1,0);
-        ll.remove(1);
+        //ll.add(1,0);
+//        ll.removeLast();
+        System.out.println(ll.size());
+       ll.remove(1);
         System.out.println(ll.get(2));
+        System.out.println(ll.size());
     }
 }
