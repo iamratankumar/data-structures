@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
         /*ArrayList<Integer> list = new ArrayList<>(1);
@@ -19,9 +21,6 @@ public class Main {
         ll.add(4);
         //ll.add(1,0);
 //        ll.removeLast();
-        System.out.println(ll.size());
-       ll.remove(1);
-        System.out.println(ll.get(2));
-        System.out.println(ll.size());
+        System.out.println(ll.getLast());
     }
 }

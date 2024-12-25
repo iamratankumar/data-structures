@@ -104,10 +104,20 @@ public class LinkedList<T>{
         }
         return curr;
     }
+    T getLast(){
+        if(isEmpty()) throw new NullPointerException("List is Empty");
+        return tail.value;
+    }
+    T getFirst(){
+        if(isEmpty()) throw new NullPointerException("List is Empty");
+        return head.value;
+    }
 
     T get(int index){
         if(index <0 || index >size) throw new IndexOutOfBoundsException("Invalid index: "+index);
         if(isEmpty())throw new NullPointerException("List is empty");
+        if(index ==0) return getFirst();
+        if(index==size()-1) return getLast();
         int i=0;
         Node curr =head;
         while (i < index){
