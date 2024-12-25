@@ -19,8 +19,9 @@ public class Main {
         ll.add(2);
         ll.add(3);
         ll.add(4);
-        //ll.add(1,0);
-//        ll.removeLast();
-        System.out.println(ll.getLast());
+        ll.add(1,0);
+        //ll.remove(2);
+      // ll.removeLast();
+        System.out.println(ll.get(3));
     }
 }

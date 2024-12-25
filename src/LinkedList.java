@@ -16,7 +16,7 @@ public class LinkedList<T>{
     }// value, next
 
     private Node head,tail;
-    private static int size;
+    private int size;
 
     public LinkedList(){
         head = tail = null;
@@ -29,15 +29,22 @@ public class LinkedList<T>{
     }
     void add(int index, T item){
         if(index <0 || index >size) throw new IndexOutOfBoundsException("Invalid index: "+index);
-        Node newNode = new Node(item);
         if(index==0){
             addFirst(item);
-        }else {
-            Node curr = searchNode(index-1);
-            newNode.next = curr;
-            curr.next = newNode;
-            size++;
+            return;
         }
+        if(index == size){
+            addLast(item);
+            return;
+        }
+
+
+        Node curr = searchNode(index-1);
+        Node newNode = new Node(item,curr.next,curr);
+
+        newNode.next.prev = newNode;
+        curr.next = newNode;
+        size++;
     }
 
     void addFirst(T item){
@@ -72,8 +79,15 @@ public class LinkedList<T>{
     }
 
     void remove(int index){
-        if(isEmpty()) throw  new NullPointerException("List is empty");
-        if(index ==0) head = head.next;
+        if(isEmpty()) throw  new IllegalStateException("List is empty");
+        if(index ==0){
+            removeFirst();
+            return;
+        }
+        if(index == size-1) {
+            removeLast();
+            return;
+        }
         Node curr = searchNode(index-1);
         curr.next= curr.next.next;
         curr.next.prev = curr;
@@ -81,41 +95,52 @@ public class LinkedList<T>{
 
     }
     void removeFirst(){
-        if(isEmpty()) throw  new NullPointerException("List is empty");
+        if(isEmpty()) throw  new IllegalStateException("List is empty");
         head = head.next;
         head.prev = null;
         size--;
     }
     void removeLast(){
-        if(isEmpty()) throw new NullPointerException("List is empty");
+        if(isEmpty()) throw new IllegalStateException("List is empty");
         tail = tail.prev;
-        tail.next =null;
+        if(tail !=null) tail.next =null;
+        else head =null;
         size--;
     }
 
-    boolean isEmpty(){ return head== null || size<=0;}
+    boolean isEmpty(){ return head == null || size == 0;}
 
      Node searchNode(int idx){
-        Node curr = head;
+        /*Node curr = head;
         int i=0;
         while(i<idx){
             curr = curr.next;
             i++;
         }
-        return curr;
+        return curr;*/
+
+         Node curr;
+         if(idx <size/2){
+             curr = head;
+             for(int i=0; i< idx;i++) curr = curr.next;
+         }else{
+             curr =tail;
+             for(int i=size-1; i>idx;i--) curr= curr.prev;
+         }
+         return curr;
     }
     T getLast(){
-        if(isEmpty()) throw new NullPointerException("List is Empty");
+        if(isEmpty()) throw new IllegalStateException("List is Empty");
         return tail.value;
     }
     T getFirst(){
-        if(isEmpty()) throw new NullPointerException("List is Empty");
+        if(isEmpty()) throw new IllegalStateException("List is Empty");
         return head.value;
     }
 
     T get(int index){
-        if(index <0 || index >size) throw new IndexOutOfBoundsException("Invalid index: "+index);
-        if(isEmpty())throw new NullPointerException("List is empty");
+        if(index <0 || index >=size) throw new IndexOutOfBoundsException("Invalid index: "+index);
+        if(isEmpty())throw new IllegalStateException("List is empty");
         if(index ==0) return getFirst();
         if(index==size()-1) return getLast();
         int i=0;
