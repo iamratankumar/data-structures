@@ -22,6 +22,15 @@ public class LinkedList<T>{
         head = tail = null;
         size=0;
     }
+    public LinkedList(T[] list){
+        addAll(list);
+    }
+
+    void addAll(T[] list){
+        for(T ls :list){
+            addLast(ls);
+        }
+    }
 
 
     public void add(T item){
@@ -49,7 +58,9 @@ public class LinkedList<T>{
 
     void addFirst(T item){
         Node newNode = new Node(item);
-        if(isEmpty()) {head = tail = newNode;}
+        if(isEmpty()) {
+            head = tail = newNode;
+        }
         else{
             /*Node newNode = new Node(item);
             newNode.next = head;

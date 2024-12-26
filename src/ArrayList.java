@@ -12,8 +12,13 @@ public class ArrayList<T> {
         this.capacity = size;
         arr = (T[]) new Object[capacity];
     }
-    public ArrayList(T[] list){
-
+    ArrayList(T[] list){
+        addAll(list);
+    }
+    void addAll(T[] list){
+        for(T it : list){
+            add(it);
+        }
     }
 
     void add(T item){
