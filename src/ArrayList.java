@@ -1,6 +1,10 @@
+import java.util.Arrays;
+import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.Spliterator;
+import java.util.function.Consumer;
 
-public class ArrayList<T> {
+public class ArrayList<T> implements Iterable<T> {
     private T arr[];
     private int size=0,capacity=0;
 
@@ -62,6 +66,7 @@ public class ArrayList<T> {
         arr[index] = item;
     }
 
+
     int size(){
         return size;
     }
@@ -77,4 +82,32 @@ public class ArrayList<T> {
         }
     }
 
+    @Override
+    public Iterator<T> iterator() {
+        return new Iterator<T>() {
+            private int i=0;
+            @Override
+            public boolean hasNext() {
+                return i<size;
+            }
+
+            @Override
+            public T next() {
+                if(!hasNext()) throw new NoSuchElementException();
+                return arr[i++];
+            }
+        };
+    }
+
+
+    @Override
+    public String toString() {
+        if(size ==0) return "[]";
+        StringBuilder sb = new StringBuilder(size);
+        for(T item: arr){
+            if(item !=null)
+                sb.append(String.format("%s ",item));
+        }
+        return String.format("[ %s]", sb.toString());
+    }
 }

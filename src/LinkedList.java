@@ -1,4 +1,7 @@
-public class LinkedList<T>{
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
+public class LinkedList<T> implements Iterable<T>{
     private class Node{
         T value;
         Node next;
@@ -164,5 +167,24 @@ public class LinkedList<T>{
     }
 
     int size(){ return size;}
+    @Override
+    public Iterator<T> iterator() {
+        return new Iterator<T>() {
+            private Node it = head;
+            @Override
+            public boolean hasNext() {
+                return it != null;
+            }
+
+            @Override
+            public T next() {
+                if(!hasNext()) throw new NoSuchElementException();
+                T val = it.value;
+                it = it.next;
+                return val;
+            }
+        };
+    }
+
 
 }

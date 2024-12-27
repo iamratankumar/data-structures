@@ -23,5 +23,26 @@ public class Main {
         //ll.remove(2);
       // ll.removeLast();
         System.out.println(ll.get(3));
+
+        LinkedList<Integer> lis = new LinkedList<>(new Integer[]{1,2,3,4,5});
+
+        int a=1;
+        BinarySearchTree<Integer> bst = new BinarySearchTree<>();
+
+        bst.insert(22);
+        bst.insert(12);
+        bst.insert(8);
+        bst.insert(20);
+        bst.insert(30);
+        bst.insert(25);
+        bst.insert(40);
+
+        System.out.println(bst.traverse(BinarySearchTree.ORDER.INORDER));
+
+        bst.remove(22);
+
+        System.out.println(bst.traverse(BinarySearchTree.ORDER.INORDER));
+
+
     }
 }
