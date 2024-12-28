@@ -1,5 +1,8 @@
+package DataStructures;
+
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+
 
 public class LinkedList<T> implements Iterable<T>{
     private class Node{
@@ -29,7 +32,7 @@ public class LinkedList<T> implements Iterable<T>{
         addAll(list);
     }
 
-    void addAll(T[] list){
+    public void addAll(T[] list){
         for(T ls :list){
             addLast(ls);
         }
@@ -39,7 +42,7 @@ public class LinkedList<T> implements Iterable<T>{
     public void add(T item){
         addLast(item);
     }
-    void add(int index, T item){
+    public void add(int index, T item){
         if(index <0 || index >size) throw new IndexOutOfBoundsException("Invalid index: "+index);
         if(index==0){
             addFirst(item);
@@ -59,7 +62,7 @@ public class LinkedList<T> implements Iterable<T>{
         size++;
     }
 
-    void addFirst(T item){
+    public void addFirst(T item){
         Node newNode = new Node(item);
         if(isEmpty()) {
             head = tail = newNode;
@@ -76,7 +79,7 @@ public class LinkedList<T> implements Iterable<T>{
         size++;
     }
 
-    void addLast(T item){
+    public void addLast(T item){
         Node newNode = new Node(item);
         if(isEmpty()) {head =tail = newNode;}
         else {
@@ -92,7 +95,7 @@ public class LinkedList<T> implements Iterable<T>{
         size++;
     }
 
-    void remove(int index){
+    public void remove(int index){
         if(isEmpty()) throw  new IllegalStateException("List is empty");
         if(index ==0){
             removeFirst();
@@ -108,13 +111,13 @@ public class LinkedList<T> implements Iterable<T>{
         size--;
 
     }
-    void removeFirst(){
+    public void removeFirst(){
         if(isEmpty()) throw  new IllegalStateException("List is empty");
         head = head.next;
         head.prev = null;
         size--;
     }
-    void removeLast(){
+    public void removeLast(){
         if(isEmpty()) throw new IllegalStateException("List is empty");
         tail = tail.prev;
         if(tail !=null) tail.next =null;
@@ -122,7 +125,7 @@ public class LinkedList<T> implements Iterable<T>{
         size--;
     }
 
-    boolean isEmpty(){ return head == null || size == 0;}
+    public boolean isEmpty(){ return head == null || size == 0;}
 
      Node searchNode(int idx){
         /*Node curr = head;
@@ -143,16 +146,16 @@ public class LinkedList<T> implements Iterable<T>{
          }
          return curr;
     }
-    T getLast(){
+    public T getLast(){
         if(isEmpty()) throw new IllegalStateException("List is Empty");
         return tail.value;
     }
-    T getFirst(){
+    public T getFirst(){
         if(isEmpty()) throw new IllegalStateException("List is Empty");
         return head.value;
     }
 
-    T get(int index){
+    public T get(int index){
         if(index <0 || index >=size) throw new IndexOutOfBoundsException("Invalid index: "+index);
         if(isEmpty())throw new IllegalStateException("List is empty");
         if(index ==0) return getFirst();
@@ -166,7 +169,7 @@ public class LinkedList<T> implements Iterable<T>{
         return curr.value;
     }
 
-    int size(){ return size;}
+    public int size(){ return size;}
     @Override
     public Iterator<T> iterator() {
         return new Iterator<T>() {

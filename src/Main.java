@@ -1,20 +1,23 @@
-import java.util.List;
+import DataStructures.ArrayList;
+import SortingAlgorithms.SelectionSort;
 
 public class Main {
     public static void main(String[] args) {
-        /*ArrayList<Integer> list = new ArrayList<>(1);
+        ArrayList<Integer> list = new ArrayList<>(1);
 
 
-        list.add(2);
+      /*  list.add(2);
         list.add(3);
         list.add(1);
         list.add(3, 4);
         list.add(5);
 
-        System.out.println(list.size());*/
+        System.out.println(list.toString());
+        list.reverse();
+        System.out.println(list.toString());*/
 
 
-        LinkedList<Integer>  ll = new LinkedList<>();
+       /* DataStructures.LinkedList<Integer>  ll = new DataStructures.LinkedList<>();
         ll.add(1);
         ll.add(2);
         ll.add(3);
@@ -24,10 +27,10 @@ public class Main {
       // ll.removeLast();
         System.out.println(ll.get(3));
 
-        LinkedList<Integer> lis = new LinkedList<>(new Integer[]{1,2,3,4,5});
+        DataStructures.LinkedList<Integer> lis = new DataStructures.LinkedList<>(new Integer[]{1,2,3,4,5});
 
         int a=1;
-        BinarySearchTree<Integer> bst = new BinarySearchTree<>();
+        DataStructures.BinarySearchTree<Integer> bst = new DataStructures.BinarySearchTree<>();
 
         bst.insert(22);
         bst.insert(12);
@@ -37,12 +40,17 @@ public class Main {
         bst.insert(25);
         bst.insert(40);
 
-        System.out.println(bst.traverse(BinarySearchTree.ORDER.INORDER));
+        System.out.println(bst.traverse(DataStructures.BinarySearchTree.ORDER.INORDER));
 
-        bst.remove(22);
+        bst.remove(8);
 
-        System.out.println(bst.traverse(BinarySearchTree.ORDER.INORDER));
+        System.out.println(bst.traverse(DataStructures.BinarySearchTree.ORDER.INORDER));*/
 
+
+        int[] arr = new int[]{2,3,1,5,8,9,0};
+
+
+        SelectionSort.sort(arr);
 
     }
 }

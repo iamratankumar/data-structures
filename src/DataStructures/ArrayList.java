@@ -1,11 +1,11 @@
-import java.util.Arrays;
+package DataStructures;
+
 import java.util.Iterator;
 import java.util.NoSuchElementException;
-import java.util.Spliterator;
-import java.util.function.Consumer;
 
+@SuppressWarnings("unchecked")
 public class ArrayList<T> implements Iterable<T> {
-    private T arr[];
+    private T[] arr;
     private int size=0,capacity=0;
 
     public ArrayList(){
@@ -25,11 +25,11 @@ public class ArrayList<T> implements Iterable<T> {
         }
     }
 
-    void add(T item){
+    public void add(T item){
         resize();
         arr[size++] = item;
     }
-    void add(int index,T item){
+    public void add(int index,T item){
         if( index >size) throw new IndexOutOfBoundsException("invalid index value: "+index);
         resize();
         T iloc=null;
@@ -49,25 +49,25 @@ public class ArrayList<T> implements Iterable<T> {
         }
     }
 
-    T get(int index){
+    public T get(int index){
         if(index >=size || index <0) throw new ArrayIndexOutOfBoundsException();
         return arr[index];
     }
 
-    int indexOf(T item){
+    public int indexOf(T item){
         for(int i=0;i<size; i++){
             if (arr[i].equals(item)) return i;
         }
         throw new NoSuchElementException("No such item: "+item);
     }
 
-    void replace(int index, T item){
+    public void replace(int index, T item){
         if(index <0 || index>=size) throw  new IndexOutOfBoundsException();
         arr[index] = item;
     }
 
 
-    int size(){
+    public int size(){
         return size;
     }
 
@@ -75,11 +75,21 @@ public class ArrayList<T> implements Iterable<T> {
         if(size==capacity){
             capacity*=2;
             T[] tmp = (T[]) new Object[capacity];
-            for(int i=0; i<size; i++){
-                tmp[i] = arr[i];
-            }
+            if (size >= 0) System.arraycopy(arr, 0, tmp, 0, size);
             arr = tmp;
         }
+    }
+
+    /*This method will reverse the array and save it.
+    * This method will not return anything
+    * */
+    public void reverse(){
+        T[] tmp = (T[]) new Object[size];
+
+        for(int i=size-1,j=0;i>=0; i--,j++){
+            tmp[j] = arr[i];
+        }
+        arr = tmp;
     }
 
     @Override

@@ -1,3 +1,5 @@
+package DataStructures;
+
 import java.util.Iterator;
 
 import java.util.NoSuchElementException;
@@ -29,7 +31,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T>{
         this.size =0;
     }
 
-    void insert(T value){
+    public void insert(T value){
         if(root == null){
             root = new Node(value);
             size++;
@@ -47,7 +49,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T>{
         return node;
     }
 
-    void remove(T value){
+    public void remove(T value){
         if(root == null) throw new IllegalStateException("Tree is Empty");
         if(contains(value)){
 
@@ -85,7 +87,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T>{
         return curr;
     }
 
-    boolean contains(T value){
+    public boolean contains(T value){
         return contains(root, value) != null;
     }
 
@@ -101,7 +103,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T>{
 
 
 
-    ArrayList<T> traverse(ORDER order){
+    public ArrayList<T> traverse(ORDER order){
         if(root == null) throw  new IllegalStateException("Tree is empty");
         ArrayList<T> list = new ArrayList<>();
         switch (order){
