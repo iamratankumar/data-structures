@@ -1,5 +1,8 @@
 import DataStructures.ArrayList;
+import SortingAlgorithms.BubbleSort;
 import SortingAlgorithms.SelectionSort;
+
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
@@ -49,8 +52,9 @@ public class Main {
 
         int[] arr = new int[]{2,3,1,5,8,9,0};
 
-
+        System.out.println(Arrays.toString(arr));
         SelectionSort.sort(arr);
+        System.out.println(Arrays.toString(arr));
 
     }
 }
